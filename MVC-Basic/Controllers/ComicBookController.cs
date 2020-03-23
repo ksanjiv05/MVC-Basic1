@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC_Basic.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,20 +23,57 @@ namespace MVC_Basic.Controllers
 
         //}
 
+        //using view bag
+        //public ActionResult Details()
+        //{
+
+
+        //    ViewBag.SeriesTitle = "The Amazing Spider-Man";
+        //    ViewBag.IssueNumber = 700;
+        //    ViewBag.Description = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>";
+        //    ViewBag.Artists = new string[]
+        //    {
+        //        "Script: Dan Slott",
+        //        "Pencils: Humberto Ramos",
+        //        "Inks: Victor Olazaba",
+        //        "Colors: Edgar Delgado",
+        //        "Letters: Chris Eliopoulos"
+        //    };
+        //    return View();
+        //}
+
         public ActionResult Details()
         {
-            ViewBag.SeriesTitle = "The Amazing Spider-Man";
-            ViewBag.IssueNumber = 700;
-            ViewBag.Description = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>";
-            ViewBag.Artists = new string[]
+            //var ComicBook = new ComicBook()
+            //{
+            //    SeriesTitle = "The Amazing Spider-Man",
+            //    IssueNumber = 700,
+            //    description = "< p > Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
+            //    Artist = new Artist[]
+            //    {
+            //        new Artist(){ Name = "Dan Slott",Role = "Script" },
+            //        new Artist() { Name = "Humberto Ramos", Role = "Pencils" },
+            //        new Artist() { Name = "Victor Olazaba", Role = "Inks" },
+            //        new Artist() { Name = "Chris Eliopoulos", Role = "Colors" },
+
+            //    }
+            //};
+            //return View(ComicBook);
+            return View(new ComicBook()
             {
-                "Script: Dan Slott",
-                "Pencils: Humberto Ramos",
-                "Inks: Victor Olazaba",
-                "Colors: Edgar Delgado",
-                "Letters: Chris Eliopoulos"
-            };
-            return View();
+                SeriesTitle = "The Amazing Spider-Man",
+                IssueNumber = 700,
+                description = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
+                Artist = new Artist[]
+                {
+                    new Artist(){ Name = "Dan Slott",Role = "Script" },
+                    new Artist() { Name = "Humberto Ramos", Role = "Pencils" },
+                    new Artist() { Name = "Victor Olazaba", Role = "Inks" },
+                    new Artist() { Name = "Chris Eliopoulos", Role = "Colors" },
+
+                }
+            });
+               
         }
     }
 }

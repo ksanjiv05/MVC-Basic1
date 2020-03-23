@@ -21,7 +21,7 @@ namespace MVC_Basic.Models
                 return SeriesTitle + " #" + IssueNumber;
             }
         }
-
+        //seriestitle-issuenumber.jpg
         public string FileName {
             get {
                 return SeriesTitle.Replace(" ", "-").ToLower() + "-" + IssueNumber + ".jpg";
