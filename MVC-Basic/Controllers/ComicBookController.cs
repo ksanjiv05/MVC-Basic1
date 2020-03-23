@@ -9,9 +9,17 @@ namespace MVC_Basic.Controllers
     public class ComicBookController : Controller
     {
         // GET: ComicBook
-        public string Details()
+        public ActionResult Details()
         {
-            return "Hii this is my first MVC Project";
+            if(DateTime.Today.DayOfWeek==DayOfWeek.Monday)
+            {
+                return new RedirectResult("/");
+            }
+            return new ContentResult()
+            {
+                Content = "Hii this is my first MVC Project"
+            };
+            
         }
     }
 }
