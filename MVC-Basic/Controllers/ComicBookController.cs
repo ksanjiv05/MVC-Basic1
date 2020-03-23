@@ -68,6 +68,11 @@ namespace MVC_Basic.Controllers
         // return View(new ComicBookRepositry());
 
         //}
+        public ActionResult Index()
+        {
+           ComicBook[]  comicBooks= _bookRepositry.GetBooks();
+            return View(comicBooks);
+        }
 
         public ActionResult Details(int? id)//? it is used to make nullable it means if u call this method without parameter it called without error
         {
