@@ -9,9 +9,9 @@ namespace MVC_Basic.Controllers
     public class ComicBookController : Controller
     {
         // GET: ComicBook
-        public ActionResult Index()
+        public string Details()
         {
-            return View();
+            return "Hii this is my first MVC Project";
         }
     }
 }
