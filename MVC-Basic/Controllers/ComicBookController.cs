@@ -1,4 +1,5 @@
-﻿using MVC_Basic.Models;
+﻿using MVC_Basic.Data;
+using MVC_Basic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,11 @@ namespace MVC_Basic.Controllers
 {
     public class ComicBookController : Controller
     {
+        private ComicBookRepositry _bookRepositry = null;
+        public ComicBookController()
+        {
+            _bookRepositry = new ComicBookRepositry();
+        }
         // GET: ComicBook
         //public ActionResult Details()
         //{
@@ -42,38 +48,32 @@ namespace MVC_Basic.Controllers
         //    return View();
         //}
 
-        public ActionResult Details()
+        //public ActionResult Details()
+        //{
+        //var ComicBook = new ComicBook()
+        //{
+        //    SeriesTitle = "The Amazing Spider-Man",
+        //    IssueNumber = 700,
+        //    description = "< p > Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
+        //    Artist = new Artist[]
+        //    {
+        //        new Artist(){ Name = "Dan Slott",Role = "Script" },
+        //        new Artist() { Name = "Humberto Ramos", Role = "Pencils" },
+        //        new Artist() { Name = "Victor Olazaba", Role = "Inks" },
+        //        new Artist() { Name = "Chris Eliopoulos", Role = "Colors" },
+
+        //    }
+        //};
+        //return View(ComicBook);
+        // return View(new ComicBookRepositry());
+
+        //}
+
+        public ActionResult Details(int? id)//? it is used to make nullable it means if u call this method without parameter it called without error
         {
-            //var ComicBook = new ComicBook()
-            //{
-            //    SeriesTitle = "The Amazing Spider-Man",
-            //    IssueNumber = 700,
-            //    description = "< p > Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
-            //    Artist = new Artist[]
-            //    {
-            //        new Artist(){ Name = "Dan Slott",Role = "Script" },
-            //        new Artist() { Name = "Humberto Ramos", Role = "Pencils" },
-            //        new Artist() { Name = "Victor Olazaba", Role = "Inks" },
-            //        new Artist() { Name = "Chris Eliopoulos", Role = "Colors" },
-
-            //    }
-            //};
-            //return View(ComicBook);
-            return View(new ComicBook()
-            {
-                SeriesTitle = "The Amazing Spider-Man",
-                IssueNumber = 700,
-                description = "<p>Final issue! Witness the final hours of Doctor Octopus' life and his one, last, great act of revenge! Even if Spider-Man survives... <strong>will Peter Parker?</strong></p>",
-                Artist = new Artist[]
-                {
-                    new Artist(){ Name = "Dan Slott",Role = "Script" },
-                    new Artist() { Name = "Humberto Ramos", Role = "Pencils" },
-                    new Artist() { Name = "Victor Olazaba", Role = "Inks" },
-                    new Artist() { Name = "Chris Eliopoulos", Role = "Colors" },
-
-                }
-            });
-               
+            if (id == null)
+                return HttpNotFound();
+            return View(_bookRepositry.GetBook(id.Value));//the nullable type need type casting use Value properties or (int)id
         }
     }
 }
